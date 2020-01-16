@@ -8,3 +8,10 @@ class Player:
         return("Player's Name: {self.name}")
     def __repr__(self):
         return f"Player({repr(self.name, self.room)})"
+    def add_items(self, items):
+        if items in self.room.items:
+            self.room.items.remove(items)
+            self.inventory.append(items)
+            items.on_take()
+        else:
+            print("This item isn't in this room.")
